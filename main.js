@@ -66,11 +66,9 @@ function unsubscribe() {
           // the subscription id from your data store and 
           // inform the user that you disabled push
 
-          window.Demo.debug.log('Unsubscription error: ', e);
           pushButton.disabled = false;
         });
       }).catch(function(e) {
-        window.Demo.debug.log('Error thrown while unsubscribing from push messaging.', e);
       });
   });
 }
@@ -103,13 +101,11 @@ function subscribe() {
           // means we failed to subscribe and the user will need
           // to manually change the notification permission to
           // subscribe to push messages
-          window.Demo.debug.log('Permission for Notifications was denied');
           pushButton.disabled = true;
         } else {
           // A problem occurred with the subscription, this can
           // often be down to an issue or lack of the gcm_sender_id
           // and / or gcm_user_visible_only
-          window.Demo.debug.log('Unable to subscribe to push.', e);
           pushButton.disabled = false;
           pushButton.textContent = 'プッシュ通知を受信する';
         }
@@ -121,7 +117,6 @@ function subscribe() {
 function initialiseState() {
   // Are Notifications supported in the service worker?
   if (!('showNotification' in ServiceWorkerRegistration.prototype)) {
-    window.Demo.debug.log('Notifications aren\'t supported.');
     return;
   }
 
@@ -129,13 +124,11 @@ function initialiseState() {
   // If its denied, it's a permanent block until the
   // user changes the permission
   if (Notification.permission === 'denied') {
-    window.Demo.debug.log('The user has blocked notifications.');
     return;
   }
 
   // Check if push messaging is supported
   if (!('PushManager' in window)) {
-    window.Demo.debug.log('Push messaging isn\'t supported.');
     return;
   }
 
@@ -166,7 +159,6 @@ function initialiseState() {
         isPushEnabled = true;
       })
       .catch(function(err) {
-        window.Demo.debug.log('Error during getSubscription()', err);
       });
   });
 }
@@ -188,6 +180,5 @@ window.addEventListener('load', function() {
     navigator.serviceWorker.register('./service-worker.js')
     .then(initialiseState);
   } else {
-    window.Demo.debug.log('Service workers aren\'t supported in this browser.');
   }
 });
