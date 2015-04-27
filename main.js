@@ -9,14 +9,18 @@ function sendSubscriptionToServer(subscription) {
   // TODO: Send the subscription.subscriptionId and 
   // subscription.endpoint to your server and save 
   // it to send a push message at a later date
-  $.ajax({
-    type: "POST",
-    url: "SubscriptionRegister.php",
-    data: 'subscription_id='+ subscription.subscriptionId +'&endpoint='+ subscription.endpoint,
-    success: function() {
-      console.log('registed!');
-    }
-  });
+
+  // 以下のコメントアウトを外すと，SubscriptionRegister.phpを利用して
+  // subscription.subscriptionIdとsubscription.endpointをテキストファイルに書き込む．
+
+  // $.ajax({
+  //   type: "POST",
+  //   url: "SubscriptionRegister.php",
+  //   data: 'subscription_id='+ subscription.subscriptionId +'&endpoint='+ subscription.endpoint,
+  //   success: function() {
+  //     console.log('registed!');
+  //   }
+  // });
 }
 
 function showCurlCommand(subscription) {
