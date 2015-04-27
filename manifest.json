@@ -1,0 +1,12 @@
+{
+  "name": "Chrome プッシュ通知",
+  "short_name": "Chrome プッシュ通知",
+  "icons": [{
+        "src": "/chrome-push-notification/images/icon.png",
+        "sizes": "192x192"
+      }],
+  "start_url": "/chrome-push-notification/",
+  "display": "standalone",
+  "gcm_sender_id": "928986754054",
+  "gcm_user_visible_only": true
+}
