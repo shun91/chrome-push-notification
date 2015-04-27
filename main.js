@@ -53,7 +53,7 @@ function unsubscribe() {
           pushButton.textContent = 'プッシュ通知を受信する';
           return;
         }
-        
+
         var subscriptionId = pushSubscription.subscriptionId;
         // TODO: Make a request to your server to remove
         // the subscriptionId from your data store so you 
@@ -154,7 +154,7 @@ function initialiseState() {
 
         // Keep your server in sync with the latest subscriptionId
         sendSubscriptionToServer(subscription);
-        
+
         showCurlCommand(subscription);
 
         // Set your UI to show they have subscribed for
