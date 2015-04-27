@@ -23,9 +23,9 @@ function showCurlCommand(subscription) {
   // The curl command to trigger a push message straight from GCM
   var subscriptionId = subscription.subscriptionId;
   var endpoint = subscription.endpoint;
-  var curlCommand = '<h2>下記コマンドを端末上で叩くとプッシュ通知を送信できる</h2><p>curl --header "Authorization: key=' + API_KEY +
+  var curlCommand = "<h2>"+'下記コマンドを端末上で叩くとプッシュ通知を送信できる'+"</h2><p>"+'curl --header "Authorization: key=' + API_KEY +
     '" --header Content-Type:"application/json" ' + endpoint + 
-    ' -d "{\\"registration_ids\\":[\\"' + subscriptionId + '\\"]}"</p>';
+    ' -d "{\\"registration_ids\\":[\\"' + subscriptionId + '\\"]}"'+"</p>";
 
   curlCommandDiv.textContent = curlCommand;
 }
