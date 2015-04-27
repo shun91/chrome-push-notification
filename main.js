@@ -23,9 +23,9 @@ function showCurlCommand(subscription) {
   // The curl command to trigger a push message straight from GCM
   var subscriptionId = subscription.subscriptionId;
   var endpoint = subscription.endpoint;
-  var curlCommand = 'curl --header "Authorization: key=' + API_KEY +
+  var curlCommand = '<h2>下記コマンドを端末上で叩くとプッシュ通知を送信できる</h2><p>curl --header "Authorization: key=' + API_KEY +
     '" --header Content-Type:"application/json" ' + endpoint + 
-    ' -d "{\\"registration_ids\\":[\\"' + subscriptionId + '\\"]}"';
+    ' -d "{\\"registration_ids\\":[\\"' + subscriptionId + '\\"]}"</p>';
 
   curlCommandDiv.textContent = curlCommand;
 }
@@ -46,7 +46,7 @@ function unsubscribe() {
           // to allow the user to subscribe to push
           isPushEnabled = false;
           pushButton.disabled = false;
-          pushButton.textContent = 'Enable Push Messages';
+          pushButton.textContent = 'プッシュ通知を受信する';
           return;
         }
         
@@ -58,7 +58,7 @@ function unsubscribe() {
         // We have a subcription, so call unsubscribe on it
         pushSubscription.unsubscribe().then(function(successful) {
           pushButton.disabled = false;
-          pushButton.textContent = 'Enable Push Messages';
+          pushButton.textContent = 'プッシュ通知を受信する';
           isPushEnabled = false;
         }).catch(function(e) {
           // We failed to unsubscribe, this can lead to
@@ -87,7 +87,7 @@ function subscribe() {
       .then(function(subscription) {
         // The subscription was successful
         isPushEnabled = true;
-        pushButton.textContent = 'Disable Push Messages';
+        pushButton.textContent = 'プッシュ通知を解除する';
         pushButton.disabled = false;
 
         showCurlCommand(subscription);
@@ -111,7 +111,7 @@ function subscribe() {
           // and / or gcm_user_visible_only
           window.Demo.debug.log('Unable to subscribe to push.', e);
           pushButton.disabled = false;
-          pushButton.textContent = 'Enable Push Messages';
+          pushButton.textContent = 'プッシュ通知を受信する';
         }
       });
   });
@@ -162,7 +162,7 @@ function initialiseState() {
 
         // Set your UI to show they have subscribed for
         // push messages
-        pushButton.textContent = 'Disable Push Messages';
+        pushButton.textContent = 'プッシュ通知を解除する';
         isPushEnabled = true;
       })
       .catch(function(err) {
