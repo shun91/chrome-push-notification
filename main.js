@@ -27,7 +27,7 @@ function showCurlCommand(subscription) {
     '" --header Content-Type:"application/json" ' + endpoint + 
     ' -d "{\\"registration_ids\\":[\\"' + subscriptionId + '\\"]}"'+"</p>";
 
-  curlCommandDiv.textContent = curlCommand;
+  curlCommandDiv.innerHTML = curlCommand;
 }
 
 function unsubscribe() {
